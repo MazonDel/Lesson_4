@@ -6,6 +6,9 @@
 
 using namespace std;
 
+void swap(int *a, int *b);
+void evens(int* arr);
+
 int main() {
 
 	int a = 100;
@@ -37,9 +40,48 @@ int main() {
 	cout << "c is eventually retrieving what is in memory location " << **&c << endl;
 	cout << "the value of a is in memory location " << &a << endl;
 
+	//-----------Exercises-----------
+	cout << endl << endl;
+	float floater = 100;
+	float *flot = &floater;
+	cout << "Value in flot (flot)		: " << flot << endl;
+	cout << "Value at flot (*flot)		: " << *flot << endl;
+	cout << "Value at flot+3 (*flot+3)	: " << *(flot + 3) << endl;
+	// Q2: It will be a jibberish value based on the last byte of the float and the next three bytes of data in memory.
+
+	cout << endl;
+	int swap1 = 1;
+	int swap2 = 2;
+	int *swapper1 = &swap1;
+	int *swapper2 = &swap2;
+	cout << "Swap1 = " << *swapper1 << endl;
+	cout << "Swap2 = " << *swapper2 << endl;
+	swap(swapper1, swapper2);
+	cout << "Swap1 = " << *swapper1 << endl;
+	cout << "Swap2 = " << *swapper2 << endl;
+
+	cout << endl;
+	int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };
+	int *arrP = arr;
+	evens(arrP);
+
 	int x;
-	cout << "Type in a numebr to finish" << "\n";
+	cout << endl << "Type in a number to finish" << "\n";
 	cin >> x;
 
 	return 0;
+}
+
+// Q1: Because a memory address is a whole number, there is no such thing as memory address 100.5 only 100 and 101.
+
+void swap(int* a, int* b) {
+	int temp = *b;
+	*b = *a;
+	*a = temp;
+}
+
+void evens(int* arr) {
+	for (int i = 1; i < 10; i = i + 2) // Arrays are zero indexed. Advance by 2s.
+		cout << arr[i] << ' ';
+	cout << endl;
 }
